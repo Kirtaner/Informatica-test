@@ -1,24 +1,34 @@
+<h2>Informatica MDM Entity Editor</h2>
 <div class="row" style="margin-top: 1em;">
   <div class="col-md-12">
     <div class="card">
-      <div class="card-header">Entity Editor</div>
+      <div class="card-header">
+        <span class="align-text-top">{{ entityMeta.label }}: {{ entityData.label }}</span>
+        <button class="btn btn-info btn-sm align-middle float-right">Save</button>
+      </div>
 
       <div class="card-body">
-        <div class="row">
-          <div class="col-md-12">
-            {{ entityMeta.label }}: {{ entityData.label }}
-            <button class="btn btn-info float-right">Save</button>
+        <form>
+          <div class="row" style="margin-top: 1em;">
+            <!-- <form> -->
+              <div class="col-md-4" *ngFor="let entity of entityMeta.field">
+                <span *ngIf="entity.dataType == 'Date'; then dateField else textField"></span>
+                <ng-template #dateField>
+                  {{ entity.label }} : <input matInput [matDatepicker]="datePicker" value="{{ entityData[entity.name] }}">
+                  <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
+                  <mat-datepicker #datePicker></mat-datepicker>
+                </ng-template>
+                <ng-template #textField>
+                  {{ entity.label }} : <input type="text" value="{{ entityData[entity.name] }}">
+                </ng-template>
+              </div>
+            <!-- </form> -->
           </div>
-        </div>
-        <div class="row" style="margin-top: 1em;">
-          <!-- <form> -->
-            <div class="col-md-4" *ngFor="let entity of entityMeta.field">{{ entity.label }}</div>
-          <!-- </form> -->
-        </div>
+        </form>
       </div>
     </div>
   </div>
 </div>
-<pre>{{ entityData | json }}</pre>
 
+<pre>{{ entityData | json }}</pre>
 <pre>{{ entityMeta | json }}</pre>

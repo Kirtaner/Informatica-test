@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import EntityData from '../../assets/entityData.json';
 import EntityMeta from '../../assets/entityMeta.json';
 
