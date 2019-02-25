@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 import EntityData from '../../assets/entityData.json';
 import EntityMeta from '../../assets/entityMeta.json';
@@ -21,4 +22,7 @@ export class EditorComponent implements OnInit {
     
   }
 
+  onSubmit(f: NgForm) {
+    console.log(f.form.value);
+  }
 }
