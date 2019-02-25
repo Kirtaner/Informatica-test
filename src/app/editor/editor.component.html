@@ -1,0 +1,24 @@
+<div class="row" style="margin-top: 1em;">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">Entity Editor</div>
+
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-12">
+            {{ entityMeta.label }}: {{ entityData.label }}
+            <button class="btn btn-info float-right">Save</button>
+          </div>
+        </div>
+        <div class="row" style="margin-top: 1em;">
+          <!-- <form> -->
+            <div class="col-md-4" *ngFor="let entity of entityMeta.field">{{ entity.label }}</div>
+          <!-- </form> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<pre>{{ entityData | json }}</pre>
+
+<pre>{{ entityMeta | json }}</pre>
