@@ -12,10 +12,10 @@
         </div>
 
         <div class="card-body">
-            <div class="row" style="margin-top: 1em;">
+          <div class="row" style="margin-top: 1em;">
 
-              <div class="col-md-4 form-group" *ngFor="let entity of metaFields">
-
+            <div class="col-md-4 form-group" *ngFor="let entity of metaFields">
+              <div *ngIf="entity.system != true">
                 <label for="{{ entity.name }}">{{ entity.label }}</label>
 
                 <span *ngIf="entity.dataType == 'Date'; then dateField else textField"></span>
@@ -33,8 +33,9 @@
                 </ng-template>
 
               </div>
-
             </div>
+
+          </div>
         </div>
       </div>
     </form>
