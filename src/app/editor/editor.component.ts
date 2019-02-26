@@ -26,9 +26,8 @@ export class EditorComponent {
     this.metaFields = this.entityMeta['field'];
   }
 
-  showModal() {
-    // this.modalService.open(content,)
-    return;
+  showModal(content) {
+    this.modalService.open(content, { centered: true, size: 'lg' });
   }
 
   onSubmit(f: NgForm) {
@@ -50,8 +49,8 @@ export class EditorComponent {
 
     Object.assign(data, { $original });
 
-    this.changedData = data;
+    sessionStorage.setItem('data', JSON.stringify(data));
 
-    this.showModal();
+    this.changedData = data;
   }
 }
