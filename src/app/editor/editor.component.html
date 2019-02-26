@@ -5,14 +5,14 @@
       <div class="card">
 
         <div class="card-header">
-          <span class="align-text-top">{{ entityMeta.label }}: {{ entityData.label }}</span>
+          <span class="align-text-top">{{ metaLabel }}: {{ entityLabel }}</span>
           <button type="submit" class="btn btn-info btn-sm align-middle float-right">Save</button>
         </div>
 
         <div class="card-body">
             <div class="row" style="margin-top: 1em;">
 
-              <div class="col-md-4 form-group" *ngFor="let entity of entityMeta.field">
+              <div class="col-md-4 form-group" *ngFor="let entity of metaFields">
 
                 <label for="{{ entity.name }}">{{ entity.label }}</label>
 
@@ -39,9 +39,3 @@
 
   </div>
 </div>
-
-<pre>{{ changedData | json }}</pre>
-<h4>Original</h4>
-<pre>{{ entityData | json }}</pre>
-<h4>Meta</h4>
-<pre>{{ entityMeta | json }}</pre>

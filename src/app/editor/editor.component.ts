@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import EntityData from '../../assets/entityData.json';
 import EntityMeta from '../../assets/entityMeta.json';
@@ -13,25 +14,44 @@ export class EditorComponent {
   entityMeta: object;
   entityData: object;
   changedData: object;
+  metaLabel: string;
+  entityLabel: string;
+  metaFields: object;
 
-  constructor() {
+  constructor(private modalService: NgbModal) {
     this.entityMeta = EntityMeta;
     this.entityData = EntityData;
+    this.metaLabel = this.entityMeta['label'];
+    this.entityLabel = this.entityData['label'];
+    this.metaFields = this.entityMeta['field'];
+  }
+
+  showModal() {
+    // this.modalService.open(content,)
+    return;
   }
 
   onSubmit(f: NgForm) {
-    // console.log(f);
+    let data = f.form.value;
     let formControls = f.controls;
-    // console.log(formControls);
+    let $original = { };
 
     Object.keys(formControls).forEach( element => {
-      // console.log(formControls[element]);
+
       if (formControls[element].dirty) {
-        console.log('Dirty: ', element, ' - ', formControls[element].value);
-        console.log('Original: ', this.entityData[element]);
+        if (typeof this.entityData[element] === 'undefined') {
+          $original[element] = null;
+        } else {
+          $original[element] = this.entityData[element];
+        }
       }
+
     });
 
-    this.changedData = f.form.value;
+    Object.assign(data, { $original });
+
+    this.changedData = data;
+
+    this.showModal();
   }
 }
