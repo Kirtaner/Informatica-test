@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import EntityData from '../../assets/entityData.json';
 import EntityMeta from '../../assets/entityMeta.json';
@@ -17,12 +18,17 @@ export class EditorComponent {
   entityLabel: string;
   metaFields: object;
 
-  constructor() {
+  constructor(private modalService: NgbModal) {
     this.entityMeta = EntityMeta;
     this.entityData = EntityData;
     this.metaLabel = this.entityMeta['label'];
     this.entityLabel = this.entityData['label'];
     this.metaFields = this.entityMeta['field'];
+  }
+
+  showModal() {
+    // this.modalService.open(content,)
+    return;
   }
 
   onSubmit(f: NgForm) {
@@ -45,5 +51,7 @@ export class EditorComponent {
     Object.assign(data, { $original });
 
     this.changedData = data;
+
+    this.showModal();
   }
 }
