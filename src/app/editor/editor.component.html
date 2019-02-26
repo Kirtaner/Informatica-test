@@ -1,12 +1,14 @@
+<h4>Informatica MDM Entity Editor</h4>
+
 <div class="row" style="margin-top: 1em;">
   <div class="col-md-12">
 
     <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
       <div class="card">
 
-        <div class="card-header">
-          <span class="align-text-top">{{ metaLabel }}: {{ entityLabel }}</span>
-          <button type="submit" class="btn btn-info btn-sm align-middle float-right" (click)="showModal(content)">Save</button>
+        <div class="card-header text-muted">
+          <span class="align-text-top">{{ metaLabel }} / {{ entityLabel }}</span>
+          <button type="submit" class="btn btn-success align-text-bottom float-right" (click)="showModal(content)"><fa-icon icon="save"></fa-icon> Save</button>
         </div>
 
         <div class="card-body">

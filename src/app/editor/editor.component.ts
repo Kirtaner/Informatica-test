@@ -27,7 +27,7 @@ export class EditorComponent {
   }
 
   showModal(content) {
-    this.modalService.open(content, { centered: true, size: 'lg' });
+    this.modalService.open(content, { centered: true });
   }
 
   onSubmit(f: NgForm) {
