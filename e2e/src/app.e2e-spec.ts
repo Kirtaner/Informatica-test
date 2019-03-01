@@ -1,16 +1,16 @@
 import { AppPage } from './app.po';
 import { browser, logging } from 'protractor';
 
-describe('workspace-project App', () => {
+describe('Informatica Coding Test', () => {
   let page: AppPage;
 
   beforeEach(() => {
     page = new AppPage();
   });
 
-  it('should display welcome message', () => {
+  it('should display title message, hello there if the people evaluating the source are peeking in the test stubs :)', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('Welcome to informatica-test!');
+    expect(page.getTitleText()).toEqual('Informatica MDM Entity Editor');
   });
 
   afterEach(async () => {
