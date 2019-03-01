@@ -14,18 +14,16 @@
         <div class="card-body">
           <div class="row" style="margin-top: 1em;">
 
-            <div class="col-md-4 form-group" *ngFor="let entity of metaFields">
-              <div *ngIf="entity.system != true">
+            <ng-container *ngFor="let entity of metaFields">
+              <div class="col-md-4 form-group" *ngIf="entity.system != true">
                 <label for="{{ entity.name }}">{{ entity.label }}</label>
 
                 <span *ngIf="entity.dataType == 'Date'; then dateField else textField"></span>
 
                 <ng-template #dateField>
-                  <!-- <mat-form-field> -->
                     <input class="form-control" [ngModel]="entityData[entity.name]" matInput [matDatepicker]="datePicker" name="{{ entity.name }}">
                     <mat-datepicker-toggle class="bootstrap-inline" matSuffix [for]="datePicker"></mat-datepicker-toggle>
                     <mat-datepicker #datePicker></mat-datepicker>
-                  <!-- </mat-form-field> -->
                 </ng-template>
 
                 <ng-template #textField>
@@ -33,7 +31,7 @@
                 </ng-template>
 
               </div>
-            </div>
+            </ng-container>
 
           </div>
         </div>
